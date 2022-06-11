@@ -1,0 +1,28 @@
+/* transition (property duration easing-function) */
+/* https://easings.net/ */
+.fade {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+/* will animate if the property changes */
+.fade:hover {
+  opacity: 0;
+}
+
+/* keyframe */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* use keyframe */
+/* also specify iteration count to loop infinitely */
+.rotate {
+  animation: rotate 2s linear infinite;
+}

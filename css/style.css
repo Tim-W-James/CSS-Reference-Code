@@ -1,40 +1,84 @@
 /* ===
-  selectors 
+  * selectors 
    === */
 /* by tag */
 p {
-  color:#000000;
+  color: #000000;
 }
 /* by id */
 #myTag {
-  color:red;
+  color: red;
 }
 /* by class */
 .myClass {
-  color:green;
+  color: green;
 }
 /* by tag and class */
 p.myParagraphClass {
-  color:blue;
+  color: blue;
 }
 /* by attribute */
 [for="yes"] {
-  color:orange;
+  color: orange;
 }
 /* by pseudo-class */
 :hover {
-  color:black;
+  color: black;
+}
+/* first element */
+.myList li:first-child {
+  color: red;
+}
+/* 2nd element */
+.myList li:nth-child(2) {
+  color: blue;
+}
+/* every 5th element */
+.myList li:nth-child(5n) {
+  color: blue;
+}
+/* last element */
+.myList li:last-child {
+  color: green;
 }
 /* multiple */
-a:link, a:visited {
-  color:brown;
+a:link,
+a:visited {
+  color: brown;
 }
-a:hover, a:active {
-  color:cyan;
+a:hover,
+a:active {
+  color: cyan;
+}
+/* by pseudo-element */
+input::placeholder {
+  color: red;
+}
+.pseudo-element-demo::first-letter {
+  font-weight: bold;
+}
+.pseudo-element-demo::selection {
+  background: black;
+  color: red;
+}
+/* before and after */
+.pseudo-element-demo::before {
+  content: "";
+  height: 1px;
+  width: 100%;
+  display: inline-block;
+  background: red;
+}
+.pseudo-element-demo::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  display: inline-block;
+  background: green;
 }
 /* nesting */
 p b {
-  color:pink;
+  color: pink;
 }
 /* everything */
 * {
@@ -42,33 +86,55 @@ p b {
 }
 /* important  */
 .importantClass {
-  color:white !important;
+  color: white !important;
 }
-/* media query */
-@media(max-width:1000px) {
+
+/* ===
+  * media query
+   === */
+@media (max-width: 1000px) {
   .media-demo {
-    background-color:red;
+    background-color: red;
+  }
+}
+/* device color scheme */
+@media (prefers-color-scheme: dark) {
+  .scheme {
+    background: black;
+    color: #ddd;
   }
 }
 
 /* ===
-  colour 
+  * color 
    === */
 /* by name */
 .red {
-  color:red;
+  color: red;
 }
 /* by hexadecimal */
 .green {
-  color:#00ff00;
+  color: #00ff00;
 }
 /* by rgb */
 .blue {
-  color:rgb(0, 0, 255);
+  color: rgb(0, 0, 255);
+}
+/* by hsl (hue, saturation, lightness) */
+.yellow {
+  color: hsl(60, 100%, 50%);
+}
+/* by hsl (hue, saturation, lightness) */
+.blue {
+  color: hsl(60, 100%, 50%);
+}
+/* opacity */
+.opacity {
+  color: rgba(128, 128, 128, 50%);
 }
 
 /* ===
-  fonts & text
+  * fonts & text
    === */
 /* list multiple fonts for a "fallback" if other fonts fail to load */
 .myWebSafeFont1 {
@@ -79,8 +145,9 @@ p b {
 .myWebSafeFont2 {
   font: normal 16px Verdana, Helvetica, sans-serif;
 }
-.myText {  
+.myText {
   font-style: italic;
+  font-weight: bold;
   text-decoration: underline;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -88,7 +155,7 @@ p b {
 }
 
 /* ===
-  units
+  * units
    === */
 /* pixels (absolute) */
 .left-pixels {
@@ -105,14 +172,19 @@ p b {
   position: relative;
   left: 1em;
 }
-/* rem (relative to font-size of the root element) */
+/* rem (relative to font-size of the root element) - preferred */
 .left-rem {
   position: relative;
   left: 1rem;
 }
+/* ch (characters) */
+.ch {
+  position: relative;
+  left: 1ch;
+}
 
 /* ===
-  width & height
+  * width & height
    == */
 /* by pixel */
 .container1 {
@@ -123,9 +195,19 @@ p b {
 .container2 {
   width: 80%;
 }
+/* can use @media queries for padding */
+/* clamp (min preferred max) */
+.clamp-demo {
+  width: clamp(45ch, 50%, 75ch);
+}
+/* aspect ratio width/height */
+.ar-demo {
+  width: 10%;
+  aspect-ratio: 10/5;
+}
 
 /* ===
-  margin, border, padding
+  * margin, border, padding
    === */
 .margin1 {
   margin: auto;
@@ -151,25 +233,24 @@ p b {
 .padding1 {
   padding: 5px;
 }
-
 /* ===
-  images
+  * images
    === */
 li {
-  list-style-image: url('../images/check.png');
+  list-style-image: url("../images/check.png");
 }
 .abstract-background {
-  background-image: url('../images/bg.jpg');
+  background-image: url("../images/bg.jpg");
   background-position: center top;
   background-repeat: no-repeat;
 }
 
 /* ===
-  float
+  * float
    === */
 .block {
-  float:left;
-  width:33.3%;
+  float: left;
+  width: 33.3%;
   border: 1px solid #000;
   box-sizing: border-box;
 }
@@ -190,7 +271,7 @@ li {
 }
 
 /* ===
-  positioning
+  * positioning
    === */
 .p-box {
   width: 800px;
@@ -216,20 +297,7 @@ li {
 }
 
 /* ===
-  pseudo-classes
-   === */
-.myList li:first-child {
-  color: red;
-}
-.myList li:nth-child(2) {
-  color: blue;
-}
-.myList li:last-child {
-  color: green;
-}
-
-/* ===
-  other properties
+  * other properties
    === */
 body {
   background-color: #f4f4f4;
@@ -238,4 +306,29 @@ body {
 }
 .other {
   display: block;
+}
+
+/* ===
+  * variables
+  === */
+/* define variables on the root */
+:root {
+  --text-color: red;
+}
+/* use a variable */
+.var-demo1 {
+  color: var(--text-color);
+}
+
+/* second value is a fallback */
+.var-demo2 {
+  color: var(--text-color, blue);
+}
+/* variables cascade, so redefine to override */
+
+/* ===
+  * calculations
+  === */
+.calc-demo {
+  width: calc(100% - 20px);
 }

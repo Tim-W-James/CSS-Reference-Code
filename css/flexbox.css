@@ -1,0 +1,22 @@
+/* flexbox */
+.container1 {
+  display: flex;
+}
+/* ratios */
+.item {
+  flex: 1;
+}
+.item-big {
+  flex: 2;
+}
+
+.container2 {
+  display: flex;
+
+  /* maximize space between items */
+  justify-content: space-between;
+  align-items: center;
+
+  /* wrap if items need to overflow */
+  flex-wrap: wrap;
+}
